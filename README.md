@@ -16,7 +16,7 @@ output:
 
 好了，此时已经运行起来了。
 
-现在在浏览器中输入 `http://127.0.0.1:8081/v1/hello_world?say=hi` 就能看到浏览器再向你打招呼。
+现在在浏览器中输入 `http://127.0.0.1:8081/v1/hello_world?say=hi` 就能看到浏览器再向你打招呼。
 
 ----
 
@@ -24,58 +24,48 @@ output:
 
 PS:附上输出hello_world接口的压测
 ```
-ab -n 10000 -c 100 http://127.0.0.1:8081/v1/hello_world\?say\=hi
-This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
+hey -n 100000 -c 10 http://127.0.0.1:8081/v1/hello_world\?say\=hi
 
-Benchmarking 127.0.0.1 (be patient)
-Completed 1000 requests
-Completed 2000 requests
-Completed 3000 requests
-Completed 4000 requests
-Completed 5000 requests
-Completed 6000 requests
-Completed 7000 requests
-Completed 8000 requests
-Completed 9000 requests
-Completed 10000 requests
-Finished 10000 requests
+Summary:
+  Total:	4.0429 secs
+  Slowest:	0.0953 secs
+  Fastest:	0.0001 secs
+  Average:	0.0004 secs
+  Requests/sec:	24734.5539
+  
+  Total data:	2500000 bytes
+  Size/request:	25 bytes
+
+Response time histogram:
+  0.000 [1]	    |
+  0.010 [99933]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.019 [47]	|
+  0.029 [8]	    |
+  0.038 [5]   	|
+  0.048 [2] 	|
+  0.057 [2] 	|
+  0.067 [0] 	|
+  0.076 [0] 	|
+  0.086 [0] 	|
+  0.095 [2] 	|
 
 
-Server Software:        fasthttp
-Server Hostname:        127.0.0.1
-Server Port:            8081
+Latency distribution:
+  10% in 0.0001 secs
+  25% in 0.0002 secs
+  50% in 0.0003 secs
+  75% in 0.0004 secs
+  90% in 0.0006 secs
+  95% in 0.0009 secs
+  99% in 0.0020 secs
 
-Document Path:          /v1/hello_world?say=hi
-Document Length:        25 bytes
+Details (average, fastest, slowest):
+  DNS+dialup:	0.0000 secs, 0.0001 secs, 0.0953 secs
+  DNS-lookup:	0.0000 secs, 0.0000 secs, 0.0000 secs
+  req write:	0.0000 secs, 0.0000 secs, 0.0352 secs
+  resp wait:	0.0003 secs, 0.0000 secs, 0.0901 secs
+  resp read:	0.0001 secs, 0.0000 secs, 0.0509 secs
 
-Concurrency Level:      100
-Time taken for tests:   0.918 seconds
-Complete requests:      10000
-Failed requests:        0
-Total transferred:      1790000 bytes
-HTML transferred:       250000 bytes
-Requests per second:    10890.66 [#/sec] (mean)
-Time per request:       9.182 [ms] (mean)
-Time per request:       0.092 [ms] (mean, across all concurrent requests)
-Transfer rate:          1903.74 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        2    4   1.3      4      10
-Processing:     1    5   1.4      4      11
-Waiting:        1    3   1.2      3      10
-Total:          6    9   1.6      9      16
-
-Percentage of the requests served within a certain time (ms)
-  50%      9
-  66%      9
-  75%     10
-  80%     10
-  90%     12
-  95%     12
-  98%     13
-  99%     13
- 100%     16 (longest request)
+Status code distribution:
+  [200]	100000 responses
 ```
