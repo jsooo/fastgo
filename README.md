@@ -1,5 +1,5 @@
 # fastgo
-Fastgo 是一个基于 `fasthttp` 和 `fasthttprouter` 的API微框架，甚至微小到没有框架应有的那种全局掌控力，所有的东西都可以由开发者自行定义，当然了，在开发者什么都不写的情况下pull下来也是可以直接使用。
+Fastgo 是一个基于 `fasthttp` 和 `fasthttprouter` 的Web Service demo，所有的东西都可以由开发者自行定义，当然了，在开发者什么都不写的情况下pull下来也是可以直接使用。
 
 ### 使用方法：
 #### step.1 
